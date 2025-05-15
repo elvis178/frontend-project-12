@@ -4,12 +4,14 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/', // Критически важно для корректных путей
   server: {
     port: 5002,
     proxy: {
       // Проксируем запросы к API
       '/api': {
         target: 'http://localhost:5001',
+        changeOrigin: true
       },
       // Проксируем WebSocket соединения
       '/socket.io': {
@@ -19,4 +21,9 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: './dist',
+    emptyOutDir: true,
+    sourcemap: true // Для отладки
+  }
 });
