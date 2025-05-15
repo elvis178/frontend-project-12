@@ -21,4 +21,4 @@ develop:
 
 build:
 	rm -rf frontend/dist
-	cd frontend && npm run build
+	cd frontend && ./node_modules/.bin/vite build
