@@ -21,4 +21,4 @@ develop:
 
 build:
 	rm -rf frontend/dist
-	npm run build
+	cd frontend && npm run build
