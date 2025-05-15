@@ -4,10 +4,17 @@
   "description": "Chat",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build --prefix frontend",
+    "start": "start-server -s ./frontend/build",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elvis178/frontend-project-12.git"
   },
   "author": "Elvis",
   "license": "ISC",
+  "homepage": "https://github.com/elvis178/frontend-project-12#readme",
   "dependencies": {
     "@hexlet/chat-server": "^2.0.4"
   }
