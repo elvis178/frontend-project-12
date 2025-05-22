@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/elvis178/frontend-project-12#readme",
   "dependencies": {
-    "@hexlet/chat-server": "^2.0.4"
+    "@hexlet/chat-server": "^2.0.4",
+    "react-bootstrap": "^2.10.10",
+    "react-bootstrap-icons": "^1.11.6"
   }
 }
