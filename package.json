@@ -5,23 +5,17 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run build --prefix frontend",
-    "start": "npx start-server -s ./frontend/dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd frontend && npm ci"
+    "start": "start-server -s ./frontend/dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elvis178/frontend-project-12.git"
   },
-  "author": "ELvis",
+  "author": "Elvis",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/elvis178/frontend-project-12/issues"
-  },
   "homepage": "https://github.com/elvis178/frontend-project-12#readme",
   "dependencies": {
-    "@hexlet/chat-server": "^2.0.4",
-    "react-bootstrap": "^2.10.10",
-    "react-bootstrap-icons": "^1.11.6"
+    "@hexlet/chat-server": "^2.0.4"
   }
 }
