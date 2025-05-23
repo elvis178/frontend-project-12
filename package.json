@@ -1,13 +1,12 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "Chat for real-time communication",
+  "description": "Chat",
   "main": "index.js",
   "scripts": {
     "build": "npm run build --prefix frontend",
-    "start": "npx start-server -s ./frontend/dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd frontend && npm ci"
+    "start": "start-server -s ./frontend/dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -15,11 +14,15 @@
   },
   "author": "Elvis",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/elvis178/frontend-project-12/issues"
-  },
   "homepage": "https://github.com/elvis178/frontend-project-12#readme",
   "dependencies": {
-    "@hexlet/chat-server": "^2.0.4"
+    "@hexlet/chat-server": "^2.0.4",
+    "@reduxjs/toolkit": "^2.8.2",
+    "bootstrap": "^5.3.6",
+    "i18next": "^25.2.0",
+    "leo-profanity": "^1.7.0",
+    "react-i18next": "^15.5.2",
+    "react-redux": "^9.2.0",
+    "react-toastify": "^11.0.5"
   }
 }
