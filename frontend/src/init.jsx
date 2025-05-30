@@ -68,7 +68,7 @@ const init = async () => {
   });
 
   const rollbarConfig = {
-    accessToken: import.meta.env.ACCESS_TOKEN,
+    accessToken: import.meta.env.VITE_ROLLBAR_ACCESS_TOKEN,
     environment: 'production',
   };
 
