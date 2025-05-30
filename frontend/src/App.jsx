@@ -1,64 +1,54 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Header.jsx';
+import MainPage from './pages/MainPage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
+import SignUp from './pages/SignUpPage.jsx';
 import routes from './routes';
-import LoginPage from './components/Pages/LoginPage';
-import NotFoundPage from './components/Pages/NotFoundPage';
-import useAuth from './hooks/useAuth';
+import useAuth from './hooks/index.jsx';
+import './index.css';
 
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
-  return auth.user ? children : <Navigate to={routes.loginPagePath()} />;
-};
-
-const App = () => {
-  const auth = useAuth();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Проверка токена при загрузке приложения
-    if (auth.user?.token) {
-
-      setIsLoading(false);
-    } else {
-      setIsLoading(false);
-    }
-  }, [auth.user]);
-
-  if (isLoading) {
-    return <div>Загрузка...</div>;
-  }
+  const location = useLocation();
 
   return (
-    <Router>
-      <Routes>
-        {/* Главная страница */}
-        <Route
-          path={routes.homePath()}
-          element={
-            <PrivateRoute>
-              <div>Главная страница чата</div>
-            </PrivateRoute>
-          }
-        />
-        
-        {/* Страница входа */}
-        <Route
-          path={routes.loginPagePath()}
-          element={
-            auth.user ? (
-              <Navigate to={routes.homePath()} />
-            ) : (
-              <LoginPage />
-            )
-          }
-        />
-        
-        {/* Страница 404 */}
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
+    auth.user ? children : <Navigate to="/login" state={{ from: location }} />
   );
 };
 
-export default App;
+const App = () => (
+  <Router>
+    <div className="d-flex flex-column h-100">
+      <Header />
+      <Routes>
+        <Route path={routes.root()} errorElement={<ErrorPage />}>
+          <Route
+            index
+            element={(
+              <PrivateRoute>
+                <MainPage />
+              </PrivateRoute>
+            )}
+          />
+          <Route path={routes.login()} element={<LoginPage />} />
+          <Route path={routes.signup()} element={<SignUp />} />
+          <Route path={routes.notFound()} element={<ErrorPage />} />
+        </Route>
+      </Routes>
+      <ToastContainer />
+    </div>
+  </Router>
+);
 
+export default App;
