@@ -1,33 +1,39 @@
-import { useCallback, useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { Navigate } from 'react-router-dom';
 import AuthContext from './index.jsx';
+import useAuth from '../hooks/index.jsx';
 
 const AuthProvider = ({ children }) => {
-  const currentUser = JSON.parse(localStorage.getItem('user')) ?? null;
-  const [user, setUser] = useState(currentUser);
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
 
-  const logIn = useCallback((userData) => {
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
-  }, []);
+  const token = localStorage.getItem('token');
+  const username = localStorage.getItem('username');
 
-  const logOut = useCallback(() => {
-    localStorage.removeItem('user');
-    setUser(null);
-  }, []);
+  const logIn = (userToken, userName) => {
+    localStorage.setItem('token', userToken);
+    localStorage.setItem('username', userName);
+    setLoggedIn(true);
+  };
 
-  const getAuthHeader = useCallback(() => {
-    if (user?.token) {
-      return { Authorization: `Bearer ${user.token}` };
+  const logOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    setLoggedIn(false);
+  };
+
+  useEffect(() => {
+    if (token) {
+      setLoggedIn(true);
     }
-    return {};
-  }, [user?.token]);
+  }, [token]);
 
   const value = useMemo(() => ({
-    user,
+    loggedIn,
     logIn,
     logOut,
-    getAuthHeader,
-  }), [user, logIn, logOut, getAuthHeader]);
+    username,
+    token,
+  }), [loggedIn, username, token]);
 
   return (
     <AuthContext.Provider value={value}>
@@ -36,4 +42,11 @@ const AuthProvider = ({ children }) => {
   );
 };
 
+export const PrivateRoute = ({ children }) => {
+  const { loggedIn } = useAuth();
+
+  return (
+    loggedIn ? children : <Navigate to="/login" />
+  );
+};
 export default AuthProvider;
