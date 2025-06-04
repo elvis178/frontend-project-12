@@ -1,46 +1,80 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Navigate } from 'react-router-dom';
+import useAuth from './hooks/index.jsx';
+import { useLanguage } from './utils.js';
 import Header from './components/Header.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import MainPage from './pages/MainPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
-import SignUp from './pages/SignUpPage.jsx';
-import router from './routes.js';
-import AuthProvider, { PrivateRoute } from './context/AuthProvider.jsx';
+import SignUpPage from './pages/SignUpPage.jsx';
+import routes from './routes.js';
+import AuthProvider from './context/AuthProvider.jsx';
 
 const App = () => {
-  const { i18n } = useTranslation();
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
+  const { changeLanguage } = useLanguage();
+
+  const PrivateRoute = ({ children }) => {
+    const { loggedIn } = useAuth();
+    return loggedIn ? children : <Navigate to="/login" />;
   };
 
   return (
-    <BrowserRouter future={{
-      v7_startTransition: true,
-      v7_relativeSplatPath: true,
-    }}
-    >
-      <div className="d-flex h-100 flex-column">
+    <BrowserRouter>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        position: 'relative'
+      }}>
         <AuthProvider>
           <Header />
-          <Routes>
-            <Route
-              path={router.homePath()}
-              element={(
-                <PrivateRoute>
-                  <MainPage />
-                </PrivateRoute>
-              )}
-            />
-            <Route path={router.loginPagePath()} element={<LoginPage />} />
-            <Route path={router.signupApiPath()} element={<SignUp />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <button type="button" onClick={() => changeLanguage('ru')}>ru</button>
-            <button type="button" onClick={() => changeLanguage('en')}>en</button>
+          
+          <div style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            padding: '2rem 0'
+          }}>
+            <Routes>
+              <Route
+                path={routes.main()}
+                element={
+                  <div style={{ width: '100%' }}>
+                    <PrivateRoute>
+                      <MainPage />
+                    </PrivateRoute>
+                  </div>
+                }
+              />
+              <Route path={routes.login()} element={<LoginPage />} />
+              <Route path={routes.signUp()} element={<SignUpPage />} />
+              <Route path={routes.notFound()} element={<ErrorPage />} />
+            </Routes>
+          </div>
+
+          <div style={{ 
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px'
+          }}>
+            <button 
+              type="button" 
+              onClick={() => changeLanguage('ru')}
+              style={{ marginRight: '10px' }}
+            >
+              ru
+            </button>
+            <button 
+              type="button" 
+              onClick={() => changeLanguage('en')}
+            >
+              en
+            </button>
           </div>
         </AuthProvider>
       </div>
