@@ -1,7 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Navigate } from 'react-router-dom';
 import AuthContext from './index.jsx';
-import useAuth from '../hooks/index.jsx';
 
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -42,11 +40,4 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export const PrivateRoute = ({ children }) => {
-  const { loggedIn } = useAuth();
-
-  return (
-    loggedIn ? children : <Navigate to="/login" />
-  );
-};
 export default AuthProvider;
