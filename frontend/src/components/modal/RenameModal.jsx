@@ -7,7 +7,7 @@ import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRenameChannelMutation, useGetChannelsQuery } from '../../api/apiChannels.js';
-import createLoginValidator from '../../utils.js';
+import { channelValidator } from '../../utils.js';
 
 const RenameChannel = ({ onHide }) => {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ const RenameChannel = ({ onHide }) => {
     initialValues: {
       name: channelName,
     },
-    validationSchema: createLoginValidator(t, channelsName),
+    validationSchema: channelValidator(t, channelsName),
 
     validateOnChange: false,
     onSubmit: async (values) => {
