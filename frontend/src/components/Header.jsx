@@ -1,24 +1,27 @@
-import { useContext } from 'react';
-import { Navbar, Button, Container } from 'react-bootstrap';
-import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import AuthContext from '../context/index.jsx';
+import { Link } from 'react-router-dom';
+import { Container, Navbar } from 'react-bootstrap';
+import routes from '../routes.js';
+import useAuth from '../hooks/index.jsx';
 
 const Header = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const { user, logOut } = useContext(AuthContext);
-
-  const handleClick = () => {
-    logOut();
-    navigate('/login');
-  };
+  const { loggedIn, logOut } = useAuth();
 
   return (
-    <Navbar className="shadow-sm bg-white" expand="lg">
+    <Navbar bg="white" expand="lg" className="shadow-sm">
       <Container>
-        <Link className="navbar-brand" to="/">{t('titles.headerLogo')}</Link>
-        {user && <Button onClick={handleClick}>{t('buttonNames.logout')}</Button>}
+        <Navbar.Brand href="/">{t('navBar.title')}</Navbar.Brand>
+        {loggedIn && (
+        <Link
+          onClick={logOut}
+          to={routes.login()}
+          type="button"
+          className="btn btn-primary"
+        >
+          {t('navBar.button')}
+        </Link>
+        )}
       </Container>
     </Navbar>
   );
