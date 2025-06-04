@@ -9,14 +9,14 @@ const ErrorPage = () => {
     <div className="text-center">
       <img
         src={page404}
-        alt={t('titles.pageNotFound')}
+        alt={t('pageNotFound')}
         className="img-fluid h-25"
       />
-      <h1 className="h4 text-muted">{t('titles.pageNotFound')}</h1>
+      <h1 className="h4 text-muted">{t('errors.pageNotFound')}</h1>
       <p className="text-muted">
-        {t('links.toMainPage_title')}
+        {t('redirect')}
         {' '}
-        <Link to="/">{t('links.toMainPage_text')}</Link>
+        <Link to="/">{t('redirectOnMainPage')}</Link>
       </p>
     </div>
   );
