@@ -1,14 +1,14 @@
 const apiPath = '/api/v1';
 
-const routes = {
-  // API endpoints
-  loginApiPath: () => [apiPath, 'login'].join('/'), 
-  signupApiPath: () => [apiPath, 'signup'].join('/'),
-  dataApiPath: () => [apiPath, 'data'].join('/'),
-  
+export default {
   // Frontend routes
-  homePath: () => '/',
-  loginPagePath: () => '/login',
-};
+  main: () => '/',
+  login: () => '/login',
+  signUp: () => '/signup',
+  notFound: () => '*',
 
-export default routes;
+  // API endpoints
+  loginPath: () => [apiPath, 'login'].join('/'),
+  channelsPath: () => [apiPath, 'channels'].join('/'),
+  signUpPath: () => [apiPath, 'signup'].join('/'),
+};
