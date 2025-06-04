@@ -6,9 +6,9 @@ import {
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import createLoginValidator from '../../utils.js';
+import { channelValidator } from '../../utils.js';
 import { useAddChannelMutation, useGetChannelsQuery } from '../../api/apiChannels.js';
-import { selectActiveTab } from '../../slices/activeChannelSlice.js';
+import { selectActiveTab } from '../../slices/currentChannelSlice.js';
 
 const AddChannel = ({ onHide }) => {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ const AddChannel = ({ onHide }) => {
     initialValues: {
       name: '',
     },
-    validationSchema: createLoginValidator(t, channelsName),
+    validationSchema: channelValidator (t, channelsName),
 
     validateOnChange: false,
     onSubmit: async (values) => {
