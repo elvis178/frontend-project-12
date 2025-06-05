@@ -27,7 +27,12 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true, // Для отладки
     rollupOptions: {
-      input: './index.html'
-    }
+      input: './index.html',
+      manualChunks: {
+        formik: ['formik'],  
+        reactBootstrap: ['react-bootstrap'],
+        reactBootstrapIcons: ['react-bootstrap-icons'],
+      },
+    },
   },
 });
