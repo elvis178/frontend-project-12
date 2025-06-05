@@ -87,7 +87,7 @@ const LoginPage = () => {
             </Card.Body>
             <Card.Footer className="p-4">
               <div className="text-center">
-                <span>
+                <span className="me-2">
                   {t('loginForm.span')}
                 </span>
                 <a href="/signup">
