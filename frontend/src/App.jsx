@@ -22,59 +22,25 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-        position: 'relative'
-      }}>
+      <div className="d-flex h-100 flex-column">
         <AuthProvider>
           <Header />
-          
-          <div style={{
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
-            padding: '2rem 0'
-          }}>
-            <Routes>
-              <Route
-                path={routes.main()}
-                element={
-                  <div style={{ width: '100%' }}>
-                    <PrivateRoute>
-                      <MainPage />
-                    </PrivateRoute>
-                  </div>
-                }
-              />
-              <Route path={routes.login()} element={<LoginPage />} />
-              <Route path={routes.signUp()} element={<SignUpPage />} />
-              <Route path={routes.notFound()} element={<ErrorPage />} />
-            </Routes>
-          </div>
-
-          <div style={{ 
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px'
-          }}>
-            <button 
-              type="button" 
-              onClick={() => changeLanguage('ru')}
-              style={{ marginRight: '10px' }}
-            >
-              ru
-            </button>
-            <button 
-              type="button" 
-              onClick={() => changeLanguage('en')}
-            >
-              en
-            </button>
+          <Routes>
+            <Route
+              path={routes.main()}
+              element={(
+                <PrivateRoute>
+                  <MainPage />
+                </PrivateRoute>
+              )}
+            />
+            <Route path={routes.login()} element={<LoginPage />} />
+            <Route path={routes.signUp()} element={<SignUpPage />} />
+            <Route path={routes.notFound()} element={<ErrorPage />} />
+          </Routes>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button type="button" style={{ border: '2px solid #0d6efd', marginRight: '10px', padding: '5px 10px', borderRadius: '4px' }} onClick={() => changeLanguage('ru')}>ru</button>
+            <button type="button" style={{ border: '2px solid #0d6efd', padding: '5px 10px', borderRadius: '4px' }} onClick={() => changeLanguage('en')}>en</button>
           </div>
         </AuthProvider>
       </div>
