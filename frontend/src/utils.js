@@ -1,5 +1,5 @@
-import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
+import { object, string, ref } from 'yup';
 
 export const useLanguage = () => {
   const { i18n } = useTranslation();
@@ -11,30 +11,27 @@ export const useLanguage = () => {
   return { changeLanguage };
 };
 
-export const channelValidator = (t, channelsNames) => Yup.object().shape({
-  name: Yup.string()
+const createLoginValidator = (t) => object().shape({
+  username: string()
+    .trim()
+    .min(3, t('modal.schema.minMax'))
+    .max(20, t('modal.schema.minMax'))
+    .required(t('modal.schema.required')),
+  password: string()
+    .required(t('modal.schema.required'))
+    .min(6, t('signUpForm.minSymbolForPassword')),
+  confirmPassword: string()
+    .required(t('modal.schema.required'))
+    .oneOf([ref('password')], t('signUpForm.oneOfPassword')),
+});
+
+export const channelValidator = (t, channelsName) => object({
+  name: string()
+    .trim()
     .required(t('modal.schema.required'))
     .min(3, t('modal.schema.minMax'))
     .max(20, t('modal.schema.minMax'))
-    .notOneOf(channelsNames, t('modal.schema.notOneOf')),
+    .notOneOf(channelsName, t('modal.schema.notOneOf')),
 });
-
-const createLoginValidator = (t) => {
-  return Yup.object().shape({
-    username: Yup.string()
-      .transform(value => value?.trim())
-      .min(3, t('modal.schema.minMax'))
-      .max(20, t('modal.schema.minMax'))
-      .required(t('modal.schema.required')),
-
-    password: Yup.string()
-      .min(6, t('signUpForm.minSymbolForPassword'))
-      .required(t('modal.schema.required')),
-      
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], t('signUpForm.passwordsMustMatch'))
-      .required(t('modal.schema.required'))
-  });
-};
 
 export default createLoginValidator;
