@@ -72,12 +72,10 @@ const Channels = () => {
 
   return (
     <>
-      {/* Модальные окна вынесены на верхний уровень */}
       {modals.type === 'adding' && <AddChannel onHide={hideModal} />}
       {modals.type === 'removing' && <RemoveChannel onHide={hideModal} />}
       {modals.type === 'renaming' && <RenameChannel onHide={hideModal} />}
 
-      {/* Основной интерфейс каналов */}
       <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
         <b>{t('channels.title')}</b>
         <Button
