@@ -26,11 +26,6 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       input: './index.html',
-      manualChunks: {
-        formik: ['formik'],  
-        reactBootstrap: ['react-bootstrap'],
-        reactBootstrapIcons: ['react-bootstrap-icons'],
-      },
     },
   },
 });
