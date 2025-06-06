@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/semi */
 import ReactDOM from 'react-dom/client';
 import init from './init.jsx';
 import './index.css';

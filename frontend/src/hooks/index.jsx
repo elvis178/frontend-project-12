@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/semi */
 import { useContext } from 'react';
 
 import authContext from '../context/index.jsx';

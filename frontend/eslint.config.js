@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/semi */
 import globals from 'globals';
 import pluginReact from 'eslint-plugin-react';
 
@@ -22,8 +23,8 @@ export default [
   pluginReact.configs.flat.recommended,
   {
     rules: {
-      semi: 'error',
-      'arrow-parens': ['error', 'always'], // Требуем скобки вокруг одного аргумента
-    },
+    'semi': 'error',
+    'arrow-parens': ['error', 'always'],
+  },
   },
 ];

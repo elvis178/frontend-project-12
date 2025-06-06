@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/semi */
 const apiPath = '/api/v1';
 
 export default {

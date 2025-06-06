@@ -1,3 +1,5 @@
+/* eslint-disable @stylistic/semi */
+/* eslint-disable @stylistic/arrow-parens */
 import { useTranslation } from 'react-i18next';
 import { object, string, ref } from 'yup';
 

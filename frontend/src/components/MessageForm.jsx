@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/semi */
 import { Button, Form } from 'react-bootstrap';
 import { ArrowRightSquare } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';

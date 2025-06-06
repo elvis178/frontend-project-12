@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/semi */
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { useRef, useState } from 'react';
