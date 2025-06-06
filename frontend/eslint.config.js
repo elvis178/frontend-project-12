@@ -15,15 +15,13 @@ export default [
   {
     settings: {
       react: {
-        version: '18.3',
+        version: 'detect',
       },
     },
   },
   pluginReact.configs.flat.recommended,
   {
     rules: {
-      '@stylistic/semi': 'off', // Отключаем требование точки с запятой
-      '@stylistic/arrow-parens': 'off', // Отключаем требование скобок вокруг аргументов
       semi: 'error',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
