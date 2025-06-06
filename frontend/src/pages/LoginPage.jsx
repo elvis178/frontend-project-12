@@ -25,7 +25,7 @@ const LoginPage = () => {
     onSubmit: async (values) => {
       setAuthFailed(false);
       try {
-        const res = await axios.post(routes.login(), values);
+        const res = await axios.post(routes.loginPath(), values);
         auth.logIn(res.data.token, res.data.username);
         navigate(routes.main());
       } catch (err) {
