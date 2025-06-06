@@ -1,30 +1,38 @@
-import globals from 'globals';
-import pluginReact from 'eslint-plugin-react';
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
 
-/** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ['**/*.{js,jsx}'] },
-  { ignores: ['/node_modules/', 'dist/'] },
+  { ignores: ['dist'] },
   {
+    files: ['**/*.{js,jsx}'],
     languageOptions: {
-      ecmaVersion: 'latest',
+      ecmaVersion: 2020,
       globals: globals.browser,
-      sourceType: 'module',
-    },
-  },
-  {
-    settings: {
-      react: {
-        version: '18.3',
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
       },
     },
-  },
-  pluginReact.configs.flat.recommended,
-  {
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
     rules: {
-      semi: 'error',
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
+      semi: ['error', 'always'],  // Разрешаем точку с запятой в конце строки
+      'arrow-parens': ['error', 'always'],  // Пропускаем круглые скобки вокруг одного аргумента
+      'quote-props': ['error', 'consistent-as-needed'],  // Разрешаем любые кавычки вокруг свойств
+      'eol-last': ['off'],  // Отключаем требование новой строки в конце файла
+      ...js.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
     },
   },
-];
+]
+
