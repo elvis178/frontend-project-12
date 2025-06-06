@@ -1,10 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Важно для корректных путей
   server: {
     port: 5002,
     proxy: {
@@ -25,7 +23,7 @@ export default defineConfig({
   build: {
     outDir: './dist',
     emptyOutDir: true,
-    sourcemap: true, // Для отладки
+    sourcemap: true,
     rollupOptions: {
       input: './index.html',
       manualChunks: {
