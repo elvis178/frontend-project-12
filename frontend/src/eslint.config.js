@@ -1,39 +1,38 @@
+import js from '@eslint/js';
 import globals from 'globals';
-import pluginReact from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
-/** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ['**/*.{js,jsx}'] },
-  { ignores: ['/node_modules/', 'dist/'] },
   {
+    ignores: ['dist'],
+  },
+  {
+    files: ['**/*.{js,jsx}'],
     languageOptions: {
-      ecmaVersion: 'latest',
+      ecmaVersion: 2020,
       globals: globals.browser,
-      sourceType: 'module',
-    },
-  },
-  {
-    settings: {
-maVersion: 'latest',
-      globals: globals.browser,
-      sourceType: 'module',
-    },
-  },
-  {
-    settings: {
-      react: {
-        version: '18.3',
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
       },
     },
-  },
-  pluginReact.configs.flat.recommended,
-  {
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
     rules: {
       semi: ['error', 'always'],
-      '@stylistic/semi': ['error', 'never'],
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
+      'arrow-body-style': ['warn', 'as-needed'],
       'arrow-parens': ['error', 'as-needed'],
+      ...js.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
     },
   },
 ];
