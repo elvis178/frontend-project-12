@@ -21,8 +21,9 @@ export default [
       'react-refresh': reactRefresh,
     },
     rules: {
-      semi: ['error', 'always'],  // Требуется точка с запятой в конце каждой строки
+      semi: 'error',
       'arrow-body-style': ['warn', 'as-needed'],
+      "arrow-parens": ["error", "as-needed"],
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
