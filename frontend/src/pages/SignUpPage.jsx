@@ -30,7 +30,7 @@ const SignUpPage = () => {
         const { data } = await axios.post(routes.signUpPath(), { username, password });
         auth.logIn(data.token, data.username);
         navigate(routes.main());
-      } 
+      }
       catch (err) {
         setSubmitting(false);
         if (err.response.status === 409) {

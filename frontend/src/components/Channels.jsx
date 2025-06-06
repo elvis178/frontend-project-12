@@ -60,7 +60,7 @@ const Channels = () => {
         top: 0,
         behavior: 'smooth',
       });
-    } 
+    }
     else {
       channelsRef.current.scrollTop = channelsRef.current.scrollHeight;
     }

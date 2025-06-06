@@ -32,7 +32,7 @@ const AddChannel = ({ onHide }) => {
         dispatch(selectActiveTab(response.data));
         toast.success(t('channels.create'));
         onHide();
-      } 
+      }
       catch (error) {
         console.log(error);
       }
