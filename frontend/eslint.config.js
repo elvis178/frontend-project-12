@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
+import react from 'eslint-plugin-react';
 
 export default [
   {
@@ -21,11 +22,22 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      react    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+      react: react,
+    },
+    settings: {
+      react: {
+        version: 'detect', // Автоматически определяет версию React
+      },
     },
     rules: {
-      semi: ['error', 'always'],
-      'arrow-body-style': ['warn', 'as-needed'],
-      'arrow-parens': ['error', 'as-needed'],
+      semi: ['error', 'always'], // Требовать точку с запятой
+      'arrow-body-style': ['warn', 'as-needed'], // Разрешаем использовать тело стрелочной функции без фигурных скобок
+      'arrow-parens': ['error', 'as-needed'], // Убираем скобки для единственного аргумента, если тело функции без фигурных скобок
+      'no-extra-semi': ['error'],
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
