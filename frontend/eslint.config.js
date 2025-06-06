@@ -23,6 +23,7 @@ export default [
   {
     rules: {
       semi: 'error',
+      'arrow-parens': ['error', 'always'], // Требуем скобки вокруг одного аргумента
     },
   },
 ];
