@@ -52,6 +52,7 @@ const AddChannel = ({ onHide }) => {
         <Form onSubmit={formik.handleSubmit}>
           <FormGroup>
             <FormControl
+              id="channelName"
               name="name"
               className="mb-2"
               value={formik.values.name}
