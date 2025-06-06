@@ -84,9 +84,9 @@ const Channels = () => {
           variant="link"
           onClick={() => showModal('adding', activeChannel)}
           aria-label={t('channels.addChannel')}
-          data-testid="add-channel-button"
         >
           <PlusSquare size={20} />
+           <span className="visually-hidden">+</span>
         </Button>
       </div>
 
