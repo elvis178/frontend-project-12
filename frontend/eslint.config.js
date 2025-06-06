@@ -23,8 +23,6 @@ export default [
   {
     rules: {
       semi: 'error',
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
     },
   },
 ];
