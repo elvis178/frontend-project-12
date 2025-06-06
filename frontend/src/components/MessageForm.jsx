@@ -20,7 +20,8 @@ const MessageForm = ({ activeChannelId, username, addMessage }) => {
         await addMessage(newMessege);
         formik.resetForm();
         formControlEl.current.focus();
-      } catch (error) {
+      } 
+      catch (error) {
         console.log(error);
       }
     },

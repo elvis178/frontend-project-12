@@ -50,7 +50,7 @@ const Channels = () => {
       onClick={() => dispatch(selectActiveTab(channel))}
     >
       <span className="me-1"># </span>
-        {channel.name}
+      {channel.name}
     </Button>
   );
 
@@ -60,7 +60,8 @@ const Channels = () => {
         top: 0,
         behavior: 'smooth',
       });
-    } else {
+    } 
+    else {
       channelsRef.current.scrollTop = channelsRef.current.scrollHeight;
     }
   }, [activeChannel]);

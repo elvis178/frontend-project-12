@@ -32,7 +32,8 @@ const AddChannel = ({ onHide }) => {
         dispatch(selectActiveTab(response.data));
         toast.success(t('channels.create'));
         onHide();
-      } catch (error) {
+      } 
+      catch (error) {
         console.log(error);
       }
       formik.resetForm();

@@ -31,7 +31,8 @@ const RenameChannel = ({ onHide }) => {
         await renameChannel({ name: values.name, id: channelId });
         toast.success(t('channels.rename'));
         onHide();
-      } catch (error) {
+      } 
+      catch (error) {
         console.log(error);
       }
       formik.resetForm();

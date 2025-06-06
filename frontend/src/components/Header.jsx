@@ -13,14 +13,14 @@ const Header = () => {
       <Container>
         <Navbar.Brand href="/">{t('navBar.title')}</Navbar.Brand>
         {loggedIn && (
-        <Link
-          onClick={logOut}
-          to={routes.login()}
-          type="button"
-          className="btn btn-primary"
-        >
-          {t('navBar.button')}
-        </Link>
+          <Link
+            onClick={logOut}
+            to={routes.login()}
+            type="button"
+            className="btn btn-primary"
+          >
+            {t('navBar.button')}
+          </Link>
         )}
       </Container>
     </Navbar>

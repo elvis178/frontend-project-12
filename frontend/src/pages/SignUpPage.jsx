@@ -30,7 +30,8 @@ const SignUpPage = () => {
         const { data } = await axios.post(routes.signUpPath(), { username, password });
         auth.logIn(data.token, data.username);
         navigate(routes.main());
-      } catch (err) {
+      } 
+      catch (err) {
         setSubmitting(false);
         if (err.response.status === 409) {
           setAuthFailed(true);
@@ -100,7 +101,7 @@ const SignUpPage = () => {
                       value={formik.values.confirmPassword}
                       ref={inputEl}
                       isInvalid={(formik.touched.confirmPassword
-                      && !!formik.errors.confirmPassword) || authFailed}
+                        && !!formik.errors.confirmPassword) || authFailed}
                       onBlur={formik.handleBlur}
                     />
                     <Form.Control.Feedback type="invalid" tooltip>

@@ -28,7 +28,8 @@ const LoginPage = () => {
         const res = await axios.post(routes.loginPath(), values);
         auth.logIn(res.data.token, res.data.username);
         navigate(routes.main());
-      } catch (err) {
+      } 
+      catch (err) {
         formik.setSubmitting(false);
         if (axios.isAxiosError(err) && err.response.status === 401) {
           setAuthFailed(true);

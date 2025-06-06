@@ -14,7 +14,8 @@ const RemoveChannel = ({ onHide }) => {
       await removeChannel(id);
       toast.success(t('channels.delete'));
       onHide();
-    } catch (err) {
+    } 
+    catch (err) {
       console.log(err);
     }
   };
