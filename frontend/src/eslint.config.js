@@ -1,7 +1,7 @@
-import js from '@eslint/js'
+import js from '@eslint/js';
 import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
   { ignores: ['dist'] },
@@ -21,7 +21,8 @@ export default [
       'react-refresh': reactRefresh,
     },
     rules: {
-      semi: 'error',
+      semi: ['error', 'always'],  // Требуется точка с запятой в конце каждой строки
+      'arrow-body-style': ['warn', 'as-needed'],
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
