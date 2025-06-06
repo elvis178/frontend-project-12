@@ -21,6 +21,9 @@ export default [
       'react-refresh': reactRefresh,
     },
     rules: {
+      // Измененные правила:
+      '@stylistic/semi': 'off',  // Отключаем требование точки с запятой
+      '@stylistic/arrow-parens': 'off',  // Отключаем требование скобок вокруг аргументов
       semi: ['error', 'always'],  // Разрешаем точку с запятой в конце строки
       'arrow-parens': ['error', 'always'],  // Пропускаем круглые скобки вокруг одного аргумента
       ...js.configs.recommended.rules,
