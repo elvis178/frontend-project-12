@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/semi */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {

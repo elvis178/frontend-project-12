@@ -1,5 +1,4 @@
 /* eslint-disable @stylistic/semi */
-/* eslint-disable @stylistic/arrow-parens */
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Container, Navbar } from 'react-bootstrap';

@@ -23,8 +23,8 @@ export default [
   pluginReact.configs.flat.recommended,
   {
     rules: {
-    'semi': 'error',
-    'arrow-parens': ['error', 'always'],
-  },
+      'semi': 'error',
+      'arrow-parens': ['error', 'always'],
+    },
   },
 ];
