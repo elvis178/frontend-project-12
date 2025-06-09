@@ -29,11 +29,13 @@ const LoginPage = () => {
 
         if (result.success) {
           navigate(routes.main());
-        } else if (result.type === 'unauthorized') {
+        } 
+        else if (result.type === 'unauthorized') {
           setAuthFailed(true);
           inputEl.current.select();
         }
-      } catch (err) {
+      } 
+      catch (err) {
         formik.setSubmitting(false);
         throw err;
       }

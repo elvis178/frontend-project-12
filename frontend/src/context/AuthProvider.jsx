@@ -26,7 +26,8 @@ const AuthProvider = ({ children }) => {
       const res = await axios.post(routes.loginPath(), credentials);
       logIn(res.data.token, res.data.username);
       return { success: true };
-    } catch (err) {
+    } 
+    catch (err) {
       if (axios.isAxiosError(err) && err.response?.status === 401) {
         return { success: false, type: 'unauthorized' };
       }
@@ -39,7 +40,8 @@ const AuthProvider = ({ children }) => {
       const res = await axios.post(routes.signUpPath(), credentials);
       logIn(res.data.token, res.data.username);
       return { success: true };
-    } catch (err) {
+    } 
+    catch (err) {
       if (axios.isAxiosError(err) && err.response?.status === 409) {
         return { success: false, type: 'userExists' };
       }

@@ -29,12 +29,14 @@ const SignUpPage = () => {
         const result = await auth.signUp({ username, password });
         if (result.success) {
           navigate(routes.main()); 
-        } else if (result.type === 'userExists') {
+        } 
+        else if (result.type === 'userExists') {
           setAuthFailed(true);
           inputEl.current.select();
         }
         setSubmitting(false);
-      } catch (err) {
+      } 
+      catch (err) {
         setSubmitting(false);
         throw err;
       }
