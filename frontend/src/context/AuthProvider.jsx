@@ -1,24 +1,24 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import axios from 'axios';
 import routes from '../routes.js';
 import AuthContext from './index.jsx';
 
 const AuthProvider = ({ children }) => {
-  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
-
-  const token = localStorage.getItem('token');
-  const username = localStorage.getItem('username');
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [username, setUsername] = useState(localStorage.getItem('username'));
 
   const logIn = (userToken, userName) => {
     localStorage.setItem('token', userToken);
     localStorage.setItem('username', userName);
-    setLoggedIn(true);
+    setToken(userToken);
+    setUsername(userName);
   };
 
   const logOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
-    setLoggedIn(false);
+    setToken(null);
+    setUsername(null);
   };
 
   const signIn = async (credentials) => {
@@ -47,21 +47,15 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (token) {
-      setLoggedIn(true);
-    }
-  }, [token]);
-
   const value = useMemo(() => ({
-    loggedIn,
+    loggedIn: !!token,
     logIn,
     logOut,
     signIn,
     signUp,
     username,
     token,
-  }), [loggedIn, username, token]);
+  }), [token, username]);
 
   return (
     <AuthContext.Provider value={value}>
