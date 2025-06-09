@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/semi */
 import { useState, useEffect, useMemo } from 'react';
 import AuthContext from './index.jsx';
 
