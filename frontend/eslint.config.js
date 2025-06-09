@@ -15,14 +15,13 @@ export default [
 
         document: 'readonly',
         localStorage: 'readonly',
+        process: 'readonly',
       },
       parserOptions: {
         projectService: true,
       },
     },
     rules: {
-      'semi': ['error', 'always'], // Обязательные точки с запятой
-      'arrow-parens': ['error', 'always'], // Скобки для стрелочных функций при одном параметре
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       '@stylistic/semi': ['error', 'always'],
@@ -33,3 +32,4 @@ export default [
     ignores: ['dist/'],
   },
 ];
+

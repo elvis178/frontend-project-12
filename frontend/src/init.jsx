@@ -56,7 +56,7 @@ const init = async (socket) => {
 
   const rollbarConfig = {
     accessToken: import.meta.env.VITE_ROLLBAR_ACCESS_TOKEN,
-    environment:  process.env.NODE_ENV,
+    environment: process.env.NODE_ENV,
   };
 
   filter.add(filter.getDictionary('en'));
