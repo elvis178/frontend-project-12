@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
+import './main.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import useAuth from './hooks/index.jsx';

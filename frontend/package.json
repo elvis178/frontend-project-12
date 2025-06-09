@@ -29,6 +29,7 @@
     "react-scroll": "^1.9.3",
     "react-toastify": "^10.0.6",
     "rollbar": "^2.26.4",
+    "sass": "^1.89.2",
     "socket.io-client": "^4.8.1",
     "yup": "^1.6.1"
   },

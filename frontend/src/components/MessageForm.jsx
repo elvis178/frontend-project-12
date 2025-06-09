@@ -4,10 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { useRef } from 'react';
 import { useFormik } from 'formik';
 import * as filter from 'leo-profanity';
+import { useAddMessageMutation } from '../api/apiMessages';
+import useAuth from '../hooks/index';
 
-const MessageForm = ({ activeChannelId, username, addMessage }) => {
+const MessageForm = ({ activeChannelId }) => {
   const { t } = useTranslation();
   const formControlEl = useRef(null);
+  const { username } = useAuth();
+  const [addMessage] = useAddMessageMutation();
 
   const formik = useFormik({
     initialValues: {
@@ -15,13 +19,12 @@ const MessageForm = ({ activeChannelId, username, addMessage }) => {
     },
     onSubmit: async (values) => {
       try {
-        const filterdBody = filter.clean(values.body);
-        const newMessege = { body: filterdBody, channelId: activeChannelId, username };
-        await addMessage(newMessege);
+        const filteredBody = filter.clean(values.body);
+        const newMessage = { body: filteredBody, channelId: activeChannelId, username };
+        await addMessage(newMessage);
         formik.resetForm();
         formControlEl.current.focus();
-      }
-      catch (error) {
+      } catch (error) {
         console.log(error);
       }
     },
@@ -55,4 +58,5 @@ const MessageForm = ({ activeChannelId, username, addMessage }) => {
     </div>
   );
 };
+
 export default MessageForm;

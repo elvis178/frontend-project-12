@@ -25,8 +25,8 @@ export default [
       'arrow-parens': ['error', 'always'], // Скобки для стрелочных функций при одном параметре
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
-      '@stylistic/semi': 'off',
-      '@stylistic/arrow-parens': 'off',
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/arrow-parens': ['error', 'always'],
     },
   },
   {

@@ -55,7 +55,8 @@ const ChannelsList = ({ showModal, channelsRef }) => {
   useEffect(() => {
     if (activeChannel.id === defaultChannel.id) {
       channelsRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
+    } 
+    else {
       channelsRef.current.scrollTop = channelsRef.current.scrollHeight;
     }
   }, [activeChannel]);
