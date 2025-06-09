@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -24,18 +23,18 @@ const LoginPage = () => {
     },
     onSubmit: async (values) => {
       setAuthFailed(false);
+
       try {
-        const res = await axios.post(routes.loginPath(), values);
-        auth.logIn(res.data.token, res.data.username);
-        navigate(routes.main());
-      }
-      catch (err) {
-        formik.setSubmitting(false);
-        if (axios.isAxiosError(err) && err.response.status === 401) {
+        const result = await auth.signIn(values);
+
+        if (result.success) {
+          navigate(routes.main());
+        } else if (result.type === 'unauthorized') {
           setAuthFailed(true);
           inputEl.current.select();
-          return;
         }
+      } catch (err) {
+        formik.setSubmitting(false);
         throw err;
       }
     },

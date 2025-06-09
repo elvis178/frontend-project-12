@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import { useRef, useState } from 'react';
 import {
   Container, Row, Col, Card, Form, Button,
@@ -27,16 +26,16 @@ const SignUpPage = () => {
     validationSchema: createLoginValidator(t),
     onSubmit: async ({ username, password }, { setSubmitting }) => {
       try {
-        const { data } = await axios.post(routes.signUpPath(), { username, password });
-        auth.logIn(data.token, data.username);
-        navigate(routes.main());
-      }
-      catch (err) {
-        setSubmitting(false);
-        if (err.response.status === 409) {
+        const result = await auth.signUp({ username, password });
+        if (result.success) {
+          navigate(routes.main()); 
+        } else if (result.type === 'userExists') {
           setAuthFailed(true);
           inputEl.current.select();
         }
+        setSubmitting(false);
+      } catch (err) {
+        setSubmitting(false);
         throw err;
       }
     },
@@ -69,7 +68,9 @@ const SignUpPage = () => {
                       onBlur={formik.handleBlur}
                     />
                     <Form.Label>{t('signUpForm.username')}</Form.Label>
-                    <Form.Control.Feedback type="invalid" tooltip>{formik.errors.username}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid" tooltip>
+                      {formik.errors.username}
+                    </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group className="form-floating mb-3" controlId="password">
                     <Form.Control
@@ -87,7 +88,9 @@ const SignUpPage = () => {
                       onBlur={formik.handleBlur}
                     />
                     <Form.Label>{t('loginForm.password')}</Form.Label>
-                    <Form.Control.Feedback type="invalid" tooltip>{formik.errors.password}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid" tooltip>
+                      {formik.errors.password}
+                    </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group className="form-floating mb-4" controlId="confirmPassword">
                     <Form.Control
@@ -109,7 +112,9 @@ const SignUpPage = () => {
                     </Form.Control.Feedback>
                     <Form.Label>{t('signUpForm.confirmPassword')}</Form.Label>
                   </Form.Group>
-                  <Button type="submit" variant="outline-primary" className="w-100">{t('signUpForm.signUpButton')}</Button>
+                  <Button type="submit" variant="outline-primary" className="w-100">
+                    {t('signUpForm.signUpButton')}
+                  </Button>
                 </fieldset>
               </Form>
             </Card.Body>

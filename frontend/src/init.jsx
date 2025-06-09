@@ -2,7 +2,6 @@ import { StrictMode } from 'react';
 import i18next from 'i18next';
 import { Provider } from 'react-redux';
 import { initReactI18next, I18nextProvider } from 'react-i18next';
-import { ToastContainer } from 'react-toastify';
 import { configureStore } from '@reduxjs/toolkit';
 import * as filter from 'leo-profanity';
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
@@ -58,7 +57,7 @@ const init = async (socket) => {
 
   const rollbarConfig = {
     accessToken: import.meta.env.VITE_ROLLBAR_ACCESS_TOKEN,
-    environment: 'production',
+    environment:  process.env.NODE_ENV,
   };
 
   filter.add(filter.getDictionary('en'));
@@ -71,7 +70,6 @@ const init = async (socket) => {
           <Provider store={store}>
             <StrictMode>
               <App />
-              <ToastContainer />
             </StrictMode>
           </Provider>
         </ErrorBoundary>

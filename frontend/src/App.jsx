@@ -11,6 +11,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
 import routes from './routes.js';
 import AuthProvider from './context/AuthProvider.jsx';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const { changeLanguage } = useLanguage();
@@ -42,6 +43,7 @@ const App = () => {
             <button type="button" style={{ border: '2px solid #0d6efd', marginRight: '10px', padding: '5px 10px', borderRadius: '4px' }} onClick={() => changeLanguage('ru')}>ru</button>
             <button type="button" style={{ border: '2px solid #0d6efd', padding: '5px 10px', borderRadius: '4px' }} onClick={() => changeLanguage('en')}>en</button>
           </div>
+          <ToastContainer />
         </AuthProvider>
       </div>
     </BrowserRouter>
