@@ -1,5 +1,3 @@
-/* eslint-disable @stylistic/semi */
-/* eslint-disable @stylistic/arrow-parens */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const apiChannels = createApi({

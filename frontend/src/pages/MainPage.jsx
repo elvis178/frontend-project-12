@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/semi */
 import {
   Container, Row, Col, Spinner,
 } from 'react-bootstrap';

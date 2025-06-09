@@ -1,5 +1,3 @@
-/* eslint-disable @stylistic/semi */
-/* eslint-disable @stylistic/arrow-parens */
 import { StrictMode } from 'react';
 import i18next from 'i18next';
 import { Provider } from 'react-redux';

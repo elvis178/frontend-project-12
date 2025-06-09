@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/semi */
 export default {
   translation: {
     loginForm: {

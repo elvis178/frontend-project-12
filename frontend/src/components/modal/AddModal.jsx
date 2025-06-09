@@ -1,5 +1,3 @@
-/* eslint-disable @stylistic/semi */
-/* eslint-disable @stylistic/arrow-parens */
 import { useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import {

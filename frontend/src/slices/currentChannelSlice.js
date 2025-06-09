@@ -1,5 +1,3 @@
-/* eslint-disable @stylistic/semi */
-/* eslint-disable @stylistic/arrow-parens */
 import { createSlice } from '@reduxjs/toolkit';
 
 export const defaultChannel = {

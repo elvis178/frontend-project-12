@@ -1,30 +1,34 @@
-/* eslint-disable @stylistic/semi */
 import globals from 'globals';
-import pluginReact from 'eslint-plugin-react';
+import pluginJs from '@eslint/js';
+import stylistic from '@stylistic/eslint-plugin';
 
-/** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ['**/*.{js,jsx}'] },
-  { ignores: ['/node_modules/', 'dist/'] },
+  stylistic.configs.recommended,
+  pluginJs.configs.recommended,
   {
+    files: [
+      '**/*.{js,ts,tsx}',
+    ],
     languageOptions: {
-      ecmaVersion: 'latest',
-      globals: globals.browser,
-      sourceType: 'module',
-    },
-  },
-  {
-    settings: {
-      react: {
-        version: 'detect',
+      globals: {
+        ...globals.node,
+        document: 'readonly',
+        localStorage: 'readonly',
+      },
+      parserOptions: {
+        projectService: true,
       },
     },
-  },
-  pluginReact.configs.flat.recommended,
-  {
     rules: {
-      'semi': 'error',
-      'arrow-parens': ['error', 'always'],
+      'semi': ['error', 'always'], // Обязательные точки с запятой
+      'arrow-parens': ['error', 'always'], // Скобки для стрелочных функций при одном параметре
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      '@stylistic/semi': 'off',
+      '@stylistic/arrow-parens': 'off',
     },
+  },
+  {
+    ignores: ['dist/'],
   },
 ];

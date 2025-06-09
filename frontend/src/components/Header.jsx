@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/semi */
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Container, Navbar } from 'react-bootstrap';

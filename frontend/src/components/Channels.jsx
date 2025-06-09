@@ -1,5 +1,3 @@
-/* eslint-disable @stylistic/semi */
-/* eslint-disable @stylistic/arrow-parens */
 import { Nav, Button, Dropdown } from 'react-bootstrap';
 import { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

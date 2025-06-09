@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/semi */
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import page404 from '../assets/page-404.svg';
