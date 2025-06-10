@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import page404 from '../assets/page-404.svg';
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import page404 from '../assets/page-404.svg'
 
 const ErrorPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <div className="text-center">
@@ -19,6 +19,6 @@ const ErrorPage = () => {
         <Link to="/">{t('redirectOnMainPage')}</Link>
       </p>
     </div>
-  );
-};
-export default ErrorPage;
+  )
+}
+export default ErrorPage

@@ -1,6 +1,6 @@
 const Messages = ({ messages }) => (
   <>
-    {messages.map((message) => (
+    {messages.map(message => (
       <div key={message.id} className="text-break mb-2">
         <b>{message.username}</b>
         {`: ${message.body}`}
@@ -9,4 +9,4 @@ const Messages = ({ messages }) => (
   </>
 );
 
-export default Messages;
+export default Messages

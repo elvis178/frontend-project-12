@@ -1,23 +1,23 @@
-import { useRef, useEffect } from 'react';
-import { useFormik } from 'formik';
+import { useRef, useEffect } from 'react'
+import { useFormik } from 'formik'
 import {
   Modal, FormGroup, FormControl, Button, Form,
-} from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
-import { channelValidator } from '../../utils.js';
-import { useAddChannelMutation, useGetChannelsQuery } from '../../api/apiChannels.js';
-import { selectActiveTab } from '../../slices/currentChannelSlice.js';
+} from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
+import { channelValidator } from '../../utils.js'
+import { useAddChannelMutation, useGetChannelsQuery } from '../../api/apiChannels.js'
+import { selectActiveTab } from '../../slices/currentChannelSlice.js'
 
 const AddChannel = ({ onHide }) => {
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const [addChannel] = useAddChannelMutation();
-  const { data: channels = [] } = useGetChannelsQuery();
-  const formControlEl = useRef(null);
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
+  const [addChannel] = useAddChannelMutation()
+  const { data: channels = [] } = useGetChannelsQuery()
+  const formControlEl = useRef(null)
 
-  const channelsName = channels.map((channel) => channel.name);
+  const channelsName = channels.map(channel => channel.name)
 
   const formik = useFormik({
     initialValues: {
@@ -28,20 +28,20 @@ const AddChannel = ({ onHide }) => {
     validateOnChange: false,
     onSubmit: async (values) => {
       try {
-        const response = await addChannel({ name: values.name });
-        dispatch(selectActiveTab(response.data));
-        toast.success(t('channels.create'));
-        onHide();
+        const response = await addChannel({ name: values.name })
+        dispatch(selectActiveTab(response.data))
+        toast.success(t('channels.create'))
+        onHide()
       }
       catch (error) {
-        console.log(error);
+        console.log(error)
       }
-      formik.resetForm();
+      formik.resetForm()
     },
   });
 
   useEffect(() => {
-    formControlEl.current.focus();
+    formControlEl.current.focus()
   }, []);
 
   return (
@@ -72,7 +72,7 @@ const AddChannel = ({ onHide }) => {
         </Form>
       </Modal.Body>
     </Modal>
-  );
-};
+  )
+}
 
-export default AddChannel;
+export default AddChannel

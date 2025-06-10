@@ -1,20 +1,20 @@
-import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   Container, Row, Col, Card, Form, Button,
-} from 'react-bootstrap';
-import { useFormik } from 'formik';
-import { useTranslation } from 'react-i18next';
-import avatarLogin from '../assets/avatar-login-page.jpg';
-import useAuth from '../hooks/index.jsx';
-import routes from '../routes.js';
+} from 'react-bootstrap'
+import { useFormik } from 'formik'
+import { useTranslation } from 'react-i18next'
+import avatarLogin from '../assets/avatar-login-page.jpg'
+import useAuth from '../hooks/index.jsx'
+import routes from '../routes.js'
 
 const LoginPage = () => {
-  const auth = useAuth();
-  const { t } = useTranslation();
-  const [authFailed, setAuthFailed] = useState(false);
-  const inputEl = useRef(null);
-  const navigate = useNavigate();
+  const auth = useAuth()
+  const { t } = useTranslation()
+  const [authFailed, setAuthFailed] = useState(false)
+  const inputEl = useRef(null)
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -22,25 +22,25 @@ const LoginPage = () => {
       password: '',
     },
     onSubmit: async (values) => {
-      setAuthFailed(false);
+      setAuthFailed(false)
 
       try {
-        const result = await auth.signIn(values);
+        const result = await auth.signIn(values)
 
         if (result.success) {
-          navigate(routes.main());
-        } 
-        else if (result.type === 'unauthorized') {
-          setAuthFailed(true);
-          inputEl.current.select();
+          navigate(routes.main())
         }
-      } 
+        else if (result.type === 'unauthorized') {
+          setAuthFailed(true)
+          inputEl.current.select()
+        }
+      }
       catch (err) {
-        formik.setSubmitting(false);
-        throw err;
+        formik.setSubmitting(false)
+        throw err
       }
     },
-  });
+  })
 
   return (
     <Container fluid className="h-100">
@@ -101,7 +101,7 @@ const LoginPage = () => {
         </Col>
       </Row>
     </Container>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage

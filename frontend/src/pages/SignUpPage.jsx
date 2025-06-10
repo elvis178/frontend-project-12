@@ -1,21 +1,21 @@
-import { useTranslation } from 'react-i18next';
-import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next'
+import { useRef, useState } from 'react'
 import {
   Container, Row, Col, Card, Form, Button,
-} from 'react-bootstrap';
-import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
-import avatarSignUp from '../assets/avatar-signUp.jpg';
-import routes from '../routes.js';
-import createLoginValidator from '../utils.js';
-import useAuth from '../hooks/index.jsx';
+} from 'react-bootstrap'
+import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
+import avatarSignUp from '../assets/avatar-signUp.jpg'
+import routes from '../routes.js'
+import createLoginValidator from '../utils.js'
+import useAuth from '../hooks/index.jsx'
 
 const SignUpPage = () => {
-  const { t } = useTranslation();
-  const inputEl = useRef(null);
-  const [authFailed, setAuthFailed] = useState(false);
-  const navigate = useNavigate();
-  const auth = useAuth();
+  const { t } = useTranslation()
+  const inputEl = useRef(null)
+  const [authFailed, setAuthFailed] = useState(false)
+  const navigate = useNavigate()
+  const auth = useAuth()
 
   const formik = useFormik({
     initialValues: {
@@ -26,22 +26,22 @@ const SignUpPage = () => {
     validationSchema: createLoginValidator(t),
     onSubmit: async ({ username, password }, { setSubmitting }) => {
       try {
-        const result = await auth.signUp({ username, password });
+        const result = await auth.signUp({ username, password })
         if (result.success) {
-          navigate(routes.main());
+          navigate(routes.main())
         }
         else if (result.type === 'userExists') {
-          setAuthFailed(true);
-          inputEl.current.select();
+          setAuthFailed(true)
+          inputEl.current.select()
         }
-        setSubmitting(false);
+        setSubmitting(false)
       }
       catch (err) {
-        setSubmitting(false);
-        throw err;
+        setSubmitting(false)
+        throw err
       }
     },
-  });
+  })
 
   return (
     <Container fluid className="h-100">
@@ -124,7 +124,7 @@ const SignUpPage = () => {
         </Col>
       </Row>
     </Container>
-  );
-};
+  )
+}
 
-export default SignUpPage;
+export default SignUpPage

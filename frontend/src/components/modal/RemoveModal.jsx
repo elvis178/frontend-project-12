@@ -1,24 +1,24 @@
-import { useSelector } from 'react-redux';
-import { Modal, Button } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
-import { useRemoveChannelMutation } from '../../api/apiChannels';
+import { useSelector } from 'react-redux'
+import { Modal, Button } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
+import { useRemoveChannelMutation } from '../../api/apiChannels'
 
 const RemoveChannel = ({ onHide }) => {
-  const { t } = useTranslation();
-  const [removeChannel] = useRemoveChannelMutation();
-  const channel = useSelector((state) => state.modals.channel);
+  const { t } = useTranslation()
+  const [removeChannel] = useRemoveChannelMutation()
+  const channel = useSelector(state => state.modals.channel)
 
   const handleRemove = async (id) => {
     try {
       await removeChannel(id);
-      toast.success(t('channels.delete'));
-      onHide();
+      toast.success(t('channels.delete'))
+      onHide()
     }
     catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   return (
     <Modal Modal show="true" onHide={onHide} centered>
@@ -36,4 +36,4 @@ const RemoveChannel = ({ onHide }) => {
   );
 };
 
-export default RemoveChannel;
+export default RemoveChannel

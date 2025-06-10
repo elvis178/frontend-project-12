@@ -1,6 +1,6 @@
-import AddChannel from './AddModal.jsx';
-import RemoveChannel from './RemoveModal.jsx';
-import RenameChannel from './RenameModal.jsx';
+import AddChannel from './AddModal.jsx'
+import RemoveChannel from './RemoveModal.jsx'
+import RenameChannel from './RenameModal.jsx'
 
 const MODAL_COMPONENTS = {
   adding: AddChannel,
@@ -9,9 +9,9 @@ const MODAL_COMPONENTS = {
 };
 
 const ChannelModal = ({ type, onHide }) => {
-  const ModalComponent = MODAL_COMPONENTS[type];
+  const ModalComponent = MODAL_COMPONENTS[type]
 
-  return ModalComponent ? <ModalComponent onHide={onHide} /> : null;
-};
+  return ModalComponent ? <ModalComponent onHide={onHide} /> : null
+}
 
-export default ChannelModal;
+export default ChannelModal

@@ -8,10 +8,10 @@ import { Button, Dropdown } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 
 const ChannelsList = ({ showModal, channelsRef }) => {
-  const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const dispatch = useDispatch()
+  const { t } = useTranslation()
   const { data: channels = [] } = useGetChannelsQuery()
-  const activeChannel = useSelector(activeChannelSelector);
+  const activeChannel = useSelector(activeChannelSelector)
 
   const variant = channel => (channel.id === activeChannel.id ? 'secondary' : '')
 

@@ -46,7 +46,7 @@ const MessageBox = () => {
         addMessage={addMessage}
       />
     </div>
-  );
-};
+  )
+}
 
-export default MessageBox;
+export default MessageBox

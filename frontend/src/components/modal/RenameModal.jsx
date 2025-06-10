@@ -1,23 +1,23 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react'
 import {
   Modal, FormGroup, FormControl, Button, Form,
-} from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
-import { useFormik } from 'formik';
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { useRenameChannelMutation, useGetChannelsQuery } from '../../api/apiChannels.js';
-import { channelValidator } from '../../utils.js';
+} from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
+import { useFormik } from 'formik'
+import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
+import { useRenameChannelMutation, useGetChannelsQuery } from '../../api/apiChannels.js'
+import { channelValidator } from '../../utils.js'
 
 const RenameChannel = ({ onHide }) => {
-  const { t } = useTranslation();
-  const formEl = useRef();
-  const channelName = useSelector((state) => state.modals.channel.name);
-  const channelId = useSelector((state) => state.modals.channel.id);
-  const { data: channels = [] } = useGetChannelsQuery();
-  const [renameChannel] = useRenameChannelMutation();
+  const { t } = useTranslation()
+  const formEl = useRef()
+  const channelName = useSelector(state => state.modals.channel.name)
+  const channelId = useSelector(state => state.modals.channel.id)
+  const { data: channels = [] } = useGetChannelsQuery()
+  const [renameChannel] = useRenameChannelMutation()
 
-  const channelsName = channels.map((channel) => channel.name);
+  const channelsName = channels.map(channel => channel.name)
 
   const formik = useFormik({
     initialValues: {
@@ -28,21 +28,21 @@ const RenameChannel = ({ onHide }) => {
     validateOnChange: false,
     onSubmit: async (values) => {
       try {
-        await renameChannel({ name: values.name, id: channelId });
-        toast.success(t('channels.rename'));
-        onHide();
+        await renameChannel({ name: values.name, id: channelId })
+        toast.success(t('channels.rename'))
+        onHide()
       }
       catch (error) {
-        console.log(error);
+        console.log(error)
       }
-      formik.resetForm();
+      formik.resetForm()
     },
   });
 
   useEffect(() => {
-    formEl.current.focus();
-    formEl.current.select();
-  }, []);
+    formEl.current.focus()
+    formEl.current.select()
+  }, [])
 
   return (
     <Modal show="true" onHide={onHide} centered>
@@ -71,7 +71,7 @@ const RenameChannel = ({ onHide }) => {
         </Form>
       </Modal.Body>
     </Modal>
-  );
-};
+  )
+}
 
-export default RenameChannel;
+export default RenameChannel

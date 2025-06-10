@@ -1,17 +1,17 @@
-import { Button, Form } from 'react-bootstrap';
-import { ArrowRightSquare } from 'react-bootstrap-icons';
-import { useTranslation } from 'react-i18next';
-import { useRef } from 'react';
-import { useFormik } from 'formik';
-import * as filter from 'leo-profanity';
-import { useAddMessageMutation } from '../api/apiMessages';
-import useAuth from '../hooks/index';
+import { Button, Form } from 'react-bootstrap'
+import { ArrowRightSquare } from 'react-bootstrap-icons'
+import { useTranslation } from 'react-i18next'
+import { useRef } from 'react'
+import { useFormik } from 'formik'
+import * as filter from 'leo-profanity'
+import { useAddMessageMutation } from '../api/apiMessages'
+import useAuth from '../hooks/index'
 
 const MessageForm = ({ activeChannelId }) => {
-  const { t } = useTranslation();
-  const formControlEl = useRef(null);
-  const { username } = useAuth();
-  const [addMessage] = useAddMessageMutation();
+  const { t } = useTranslation()
+  const formControlEl = useRef(null)
+  const { username } = useAuth()
+  const [addMessage] = useAddMessageMutation()
 
   const formik = useFormik({
     initialValues: {
@@ -20,16 +20,16 @@ const MessageForm = ({ activeChannelId }) => {
     onSubmit: async (values) => {
       try {
         const filteredBody = filter.clean(values.body);
-        const newMessage = { body: filteredBody, channelId: activeChannelId, username };
-        await addMessage(newMessage);
-        formik.resetForm();
-        formControlEl.current.focus();
+        const newMessage = { body: filteredBody, channelId: activeChannelId, username }
+        await addMessage(newMessage)
+        formik.resetForm()
+        formControlEl.current.focus()
       }
       catch (error) {
-        console.log(error);
+        console.log(error)
       }
     },
-  });
+  })
 
   return (
     <div className="mt-auto px-5 py-3">
@@ -57,7 +57,7 @@ const MessageForm = ({ activeChannelId }) => {
         </Form.Group>
       </Form>
     </div>
-  );
-};
+  )
+}
 
-export default MessageForm;
+export default MessageForm
