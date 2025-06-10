@@ -1,4 +1,4 @@
-const apiPath = '/api/v1';
+const apiPath = '/api/v1'
 
 export default {
   // Frontend routes
@@ -11,4 +11,4 @@ export default {
   loginPath: () => [apiPath, 'login'].join('/'),
   channelsPath: () => [apiPath, 'channels'].join('/'),
   signUpPath: () => [apiPath, 'signup'].join('/'),
-};
+}

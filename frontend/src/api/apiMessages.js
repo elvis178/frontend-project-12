@@ -1,39 +1,39 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const apiMessages = createApi({
   reducerPath: 'apiMessages',
   baseQuery: fetchBaseQuery({
     baseUrl: '/api/v1',
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('token')
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set('Authorization', `Bearer ${token}`)
       }
-      return headers;
+      return headers
     },
   }),
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     getMessages: builder.query({
       query: () => '/messages',
     }),
     addMessage: builder.mutation({
-      query: (newMessage) => ({
+      query: newMessage => ({
         url: 'messages',
         method: 'POST',
         body: newMessage,
       }),
     }),
     deleteMessagesByChannel: builder.mutation({
-      query: (channelId) => ({
+      query: channelId => ({
         url: `messages/channel/${channelId}`,
         method: 'DELETE',
       }),
     }),
   }),
-});
+})
 
 export const {
   useGetMessagesQuery,
   useAddMessageMutation,
   useDeleteMessagesByChannelMutation,
-} = apiMessages;
+} = apiMessages

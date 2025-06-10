@@ -31,12 +31,12 @@
     "rollbar": "^2.26.4",
     "sass": "^1.89.2",
     "socket.io-client": "^4.8.1",
-    "yup": "^1.6.1"
+    "yup": "^1.6.1",
+    "@stylistic/eslint-plugin": "^4.4.1"
   },
   "devDependencies": {
     "@eslint/create-config": "^1.9.0",
     "@eslint/js": "^9.28.0",
-    "@stylistic/eslint-plugin": "^4.4.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",

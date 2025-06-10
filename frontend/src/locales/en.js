@@ -64,4 +64,4 @@ export default {
       existsUser: 'This user already exists',
     },
   },
-};
+}

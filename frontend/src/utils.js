@@ -1,15 +1,15 @@
-import { useTranslation } from 'react-i18next';
-import { object, string, ref } from 'yup';
+import { useTranslation } from 'react-i18next'
+import { object, string, ref } from 'yup'
 
 export const useLanguage = () => {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation()
   const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
-  return { changeLanguage };
-};
+    i18n.changeLanguage(lng)
+  }
+  return { changeLanguage }
+}
 
-const createLoginValidator = (t) => object().shape({
+const createLoginValidator = t => object().shape({
   username: string()
     .trim()
     .min(3, t('modal.schema.minMax'))
@@ -21,7 +21,7 @@ const createLoginValidator = (t) => object().shape({
   confirmPassword: string()
     .required(t('modal.schema.required'))
     .oneOf([ref('password')], t('signUpForm.oneOfPassword')),
-});
+})
 
 export const channelValidator = (t, channelsName) => object({
   name: string()
@@ -30,6 +30,6 @@ export const channelValidator = (t, channelsName) => object({
     .min(3, t('modal.schema.minMax'))
     .max(20, t('modal.schema.minMax'))
     .notOneOf(channelsName, t('modal.schema.notOneOf')),
-});
+})
 
-export default createLoginValidator;
+export default createLoginValidator
