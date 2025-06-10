@@ -37,7 +37,7 @@ const RenameChannel = ({ onHide }) => {
       }
       formik.resetForm()
     },
-  });
+  })
 
   useEffect(() => {
     formEl.current.focus()

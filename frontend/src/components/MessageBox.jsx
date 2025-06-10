@@ -15,7 +15,7 @@ const MessageBox = () => {
   const messagesEl = useRef(null)
   const { username } = useAuth()
 
-  const messagesOfChannel = messages.filter((message) => message.channelId === activeChannel.id)
+  const messagesOfChannel = messages.filter(message => message.channelId === activeChannel.id)
   const countMessages = messagesOfChannel.length
 
   useEffect(() => {

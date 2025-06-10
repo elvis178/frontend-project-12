@@ -34,7 +34,7 @@ const MainPage = () => {
         </Col>
       </Row>
     </Container>
-  );
-};
+  )
+}
 
 export default MainPage

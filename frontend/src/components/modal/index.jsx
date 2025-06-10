@@ -6,7 +6,7 @@ const MODAL_COMPONENTS = {
   adding: AddChannel,
   removing: RemoveChannel,
   renaming: RenameChannel,
-};
+}
 
 const ChannelModal = ({ type, onHide }) => {
   const ModalComponent = MODAL_COMPONENTS[type]

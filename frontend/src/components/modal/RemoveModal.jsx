@@ -11,7 +11,7 @@ const RemoveChannel = ({ onHide }) => {
 
   const handleRemove = async (id) => {
     try {
-      await removeChannel(id);
+      await removeChannel(id)
       toast.success(t('channels.delete'))
       onHide()
     }
@@ -33,7 +33,7 @@ const RemoveChannel = ({ onHide }) => {
         </div>
       </Modal.Body>
     </Modal>
-  );
-};
+  )
+}
 
 export default RemoveChannel

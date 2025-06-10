@@ -4,19 +4,21 @@ import { defineConfig } from 'eslint/config'
 import stylistic from '@stylistic/eslint-plugin'
 
 export default defineConfig([
+  js.configs.recommended,
   stylistic.configs.recommended,
-  {
-    files: ['**/*.{js,mjs,cjs}'],
-    plugins: { js },
-    extends: ['js/recommended'],
-  },
+
   {
     files: ['**/*.{js,mjs,cjs}'],
     languageOptions: {
-      globals: { ...globals.node, ...globals.browser },
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
+      ecmaVersion: 'latest',
+      sourceType: 'module',
     },
   },
   {
-    ignores: ['dist/'],
+    ignores: ['dist/', 'node_modules/'],
   },
 ])

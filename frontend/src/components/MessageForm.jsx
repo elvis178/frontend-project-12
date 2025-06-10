@@ -19,7 +19,7 @@ const MessageForm = ({ activeChannelId }) => {
     },
     onSubmit: async (values) => {
       try {
-        const filteredBody = filter.clean(values.body);
+        const filteredBody = filter.clean(values.body)
         const newMessage = { body: filteredBody, channelId: activeChannelId, username }
         await addMessage(newMessage)
         formik.resetForm()

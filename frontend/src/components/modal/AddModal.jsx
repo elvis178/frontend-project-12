@@ -38,11 +38,11 @@ const AddChannel = ({ onHide }) => {
       }
       formik.resetForm()
     },
-  });
+  })
 
   useEffect(() => {
     formControlEl.current.focus()
-  }, []);
+  }, [])
 
   return (
     <Modal show="true" onHide={onHide} centered>

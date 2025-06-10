@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem('username', userName)
     setToken(userToken)
     setUsername(userName)
-  };
+  }
 
   const logOut = () => {
     localStorage.removeItem('token')
@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
       }
       throw err
     }
-  };
+  }
 
   const signUp = async (credentials) => {
     try {
@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
       }
       throw err
     }
-  };
+  }
 
   const value = useMemo(() => ({
     loggedIn: !!token,
