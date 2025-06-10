@@ -57,7 +57,7 @@ const LoginPage = () => {
                   <Form.Group className="form-floating mb-3" controlId="username">
                     <Form.Control
                       type="text"
-                      autoComplete="username"
+                      autoComplete="off"
                       required
                       placeholder={t('loginForm.username')}
                       onChange={formik.handleChange}
@@ -71,7 +71,7 @@ const LoginPage = () => {
                   <Form.Group className="form-floating mb-4" controlId="password">
                     <Form.Control
                       type="password"
-                      autoComplete="current-password"
+                      autoComplete="off"
                       required
                       placeholder={t('loginForm.password')}
                       onChange={formik.handleChange}
