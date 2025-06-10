@@ -8,10 +8,12 @@ const RemoveChannel = ({ onHide }) => {
   const { t } = useTranslation()
   const [removeChannel] = useRemoveChannelMutation()
   const channel = useSelector(state => state.modals.channel)
+  const { refetch } = useGetChannelsQuery()
 
   const handleRemove = async (id) => {
     try {
       await removeChannel(id)
+      await refetch()
       toast.success(t('channels.delete'))
       onHide()
     }
