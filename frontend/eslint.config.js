@@ -11,6 +11,7 @@ export default defineConfig([
     files: ['**/*.{js,mjs,cjs}'],
     languageOptions: {
       globals: {
+        process: "readonly",
         ...globals.node,
         ...globals.browser,
       },
