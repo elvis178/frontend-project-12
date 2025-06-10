@@ -1,10 +1,8 @@
 import js from '@eslint/js'
 import globals from 'globals'
 import { defineConfig } from 'eslint/config'
-import stylistic from '@stylistic/eslint-plugin'
 
 export default defineConfig([
-  stylistic.configs.recommended,
   {
     files: ['**/*.{js,mjs,cjs}'],
     plugins: { js },
@@ -18,12 +16,5 @@ export default defineConfig([
   },
   {
     ignores: ['dist/'],
-  },
-  {
-    rules: {
-      '@stylistic/semi': 'off',
-      '@stylistic/arrow-parens': 'off',
-      'no-console': 'warn',
-    },
   },
 ])
