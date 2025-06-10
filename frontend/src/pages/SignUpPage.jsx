@@ -57,7 +57,7 @@ const SignUpPage = () => {
                 <fieldset>
                   <Form.Group className="form-floating mb-3" controlId="username">
                     <Form.Control
-                      autoComplete="username"
+                      autoComplete="off"
                       name="username"
                       required
                       placeholder={t('signUpForm.username')}
@@ -77,7 +77,7 @@ const SignUpPage = () => {
                   <Form.Group className="form-floating mb-3" controlId="password">
                     <Form.Control
                       type="password"
-                      autoComplete="new-password"
+                      autoComplete="off"
                       aria-describedby="passwordHelpBlock"
                       name="password"
                       required
@@ -97,7 +97,7 @@ const SignUpPage = () => {
                   <Form.Group className="form-floating mb-4" controlId="confirmPassword">
                     <Form.Control
                       type="password"
-                      autoComplete="new-password"
+                      autoComplete="off"
                       aria-describedby="passwordHelpBlock"
                       name="confirmPassword"
                       required
