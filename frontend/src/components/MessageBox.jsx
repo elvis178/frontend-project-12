@@ -1,26 +1,26 @@
-import { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { activeChannelSelector } from '../slices/currentChannelSlice.js';
-import MessageForm from './MessageForm.jsx';
-import Messages from './Messages.jsx';
-import useAuth from '../hooks/index.jsx';
-import { useGetMessagesQuery, useAddMessageMutation } from '../api/apiMessages.js';
+import { useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { activeChannelSelector } from '../slices/currentChannelSlice.js'
+import MessageForm from './MessageForm.jsx'
+import Messages from './Messages.jsx'
+import useAuth from '../hooks/index.jsx'
+import { useGetMessagesQuery, useAddMessageMutation } from '../api/apiMessages.js'
 
 const MessageBox = () => {
-  const { t } = useTranslation();
-  const { data: messages = [] } = useGetMessagesQuery();
-  const [addMessage] = useAddMessageMutation();
-  const activeChannel = useSelector(activeChannelSelector);
-  const messagesEl = useRef(null);
-  const { username } = useAuth();
+  const { t } = useTranslation()
+  const { data: messages = [] } = useGetMessagesQuery()
+  const [addMessage] = useAddMessageMutation()
+  const activeChannel = useSelector(activeChannelSelector)
+  const messagesEl = useRef(null)
+  const { username } = useAuth()
 
-  const messagesOfChannel = messages.filter((message) => message.channelId === activeChannel.id);
-  const countMessages = messagesOfChannel.length;
+  const messagesOfChannel = messages.filter((message) => message.channelId === activeChannel.id)
+  const countMessages = messagesOfChannel.length
 
   useEffect(() => {
-    messagesEl.current.scrollTop = messagesEl.current.scrollHeight;
-  }, [messagesOfChannel]);
+    messagesEl.current.scrollTop = messagesEl.current.scrollHeight
+  }, [messagesOfChannel])
 
   return (
     <div className="d-flex flex-column h-100">

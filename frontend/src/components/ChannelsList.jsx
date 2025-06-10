@@ -1,21 +1,21 @@
-import { Nav } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { selectActiveTab, activeChannelSelector, defaultChannel } from '../slices/currentChannelSlice.js';
-import { useGetChannelsQuery } from '../api/apiChannels.js';
-import * as filter from 'leo-profanity';
-import { Button, Dropdown } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import { Nav } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { selectActiveTab, activeChannelSelector, defaultChannel } from '../slices/currentChannelSlice.js'
+import { useGetChannelsQuery } from '../api/apiChannels.js'
+import * as filter from 'leo-profanity'
+import { Button, Dropdown } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
 const ChannelsList = ({ showModal, channelsRef }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { data: channels = [] } = useGetChannelsQuery();
+  const { data: channels = [] } = useGetChannelsQuery()
   const activeChannel = useSelector(activeChannelSelector);
 
-  const variant = (channel) => (channel.id === activeChannel.id ? 'secondary' : '');
+  const variant = channel => (channel.id === activeChannel.id ? 'secondary' : '')
 
-  const removableChannel = (channel) => (
+  const removableChannel = channel => (
     <Dropdown role="group" className="d-flex btn-group">
       <Button
         className="w-100 rounded-0 text-start text-truncate"
@@ -37,9 +37,9 @@ const ChannelsList = ({ showModal, channelsRef }) => {
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-  );
+  )
 
-  const notRemovableChannel = (channel) =>
+  const notRemovableChannel = channel =>
     !channel.removable && (
       <Button
         type="button"
@@ -50,16 +50,16 @@ const ChannelsList = ({ showModal, channelsRef }) => {
         <span className="me-1"># </span>
         {channel.name}
       </Button>
-    );
+    )
 
   useEffect(() => {
     if (activeChannel.id === defaultChannel.id) {
-      channelsRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      channelsRef.current.scrollTo({ top: 0, behavior: 'smooth' })
     }
     else {
-      channelsRef.current.scrollTop = channelsRef.current.scrollHeight;
+      channelsRef.current.scrollTop = channelsRef.current.scrollHeight
     }
-  }, [activeChannel]);
+  }, [activeChannel])
 
   return (
     <Nav
@@ -68,13 +68,13 @@ const ChannelsList = ({ showModal, channelsRef }) => {
       className="flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block"
       ref={channelsRef}
     >
-      {channels.map((channel) => (
+      {channels.map(channel => (
         <Nav.Item as="li" key={channel.id} className="w-100">
           {channel.removable ? removableChannel(channel) : notRemovableChannel(channel)}
         </Nav.Item>
       ))}
     </Nav>
-  );
-};
+  )
+}
 
-export default ChannelsList;
+export default ChannelsList

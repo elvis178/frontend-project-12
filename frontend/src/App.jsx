@@ -1,25 +1,25 @@
-import 'react-toastify/dist/ReactToastify.css';
-import './main.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
-import useAuth from './hooks/index.jsx';
-import { useLanguage } from './utils.js';
-import Header from './components/Header.jsx';
-import ErrorPage from './pages/ErrorPage.jsx';
-import MainPage from './pages/MainPage.jsx';
-import LoginPage from './pages/LoginPage.jsx';
-import SignUpPage from './pages/SignUpPage.jsx';
-import routes from './routes.js';
-import AuthProvider from './context/AuthProvider.jsx';
-import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+import './main.scss'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import useAuth from './hooks/index.jsx'
+import { useLanguage } from './utils.js'
+import Header from './components/Header.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
+import MainPage from './pages/MainPage.jsx'
+import LoginPage from './pages/LoginPage.jsx'
+import SignUpPage from './pages/SignUpPage.jsx'
+import routes from './routes.js'
+import AuthProvider from './context/AuthProvider.jsx'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
-  const { changeLanguage } = useLanguage();
+  const { changeLanguage } = useLanguage()
 
   const PrivateRoute = ({ children }) => {
-    const { loggedIn } = useAuth();
-    return loggedIn ? children : <Navigate to="/login" />;
-  };
+    const { loggedIn } = useAuth()
+    return loggedIn ? children : <Navigate to="/login" />
+  }
 
   return (
     <BrowserRouter>
@@ -47,7 +47,7 @@ const App = () => {
         </AuthProvider>
       </div>
     </BrowserRouter>
-  );
-};
+  )
+}
 
 export default App;

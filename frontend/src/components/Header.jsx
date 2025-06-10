@@ -1,12 +1,12 @@
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { Container, Navbar } from 'react-bootstrap';
-import routes from '../routes.js';
-import useAuth from '../hooks/index.jsx';
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { Container, Navbar } from 'react-bootstrap'
+import routes from '../routes.js'
+import useAuth from '../hooks/index.jsx'
 
 const Header = () => {
-  const { t } = useTranslation();
-  const { loggedIn, logOut } = useAuth();
+  const { t } = useTranslation()
+  const { loggedIn, logOut } = useAuth()
 
   return (
     <Navbar bg="white" expand="lg" className="shadow-sm">
@@ -27,4 +27,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header
