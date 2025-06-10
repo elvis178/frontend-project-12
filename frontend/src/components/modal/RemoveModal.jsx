@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { Modal, Button } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
-import { useRemoveChannelMutation } from '../../api/apiChannels'
+import { useRemoveChannelMutation, useGetChannelsQuery } from '../../api/apiChannels'
 
 const RemoveChannel = ({ onHide }) => {
   const { t } = useTranslation()
@@ -21,7 +21,7 @@ const RemoveChannel = ({ onHide }) => {
   }
 
   return (
-    <Modal Modal show="true" onHide={onHide} centered>
+    <Modal show="true" onHide={onHide} centered>
       <Modal.Header closeButton>
         <Modal.Title className="h4">{t('modal.removeChannel')}</Modal.Title>
       </Modal.Header>
